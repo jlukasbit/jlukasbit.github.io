@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nosso Amor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    img {
+      width: 300px;
+      border-radius: 10px;
+    }
+    .contador {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Estamos juntos há...</h1>
+  <img src="URL_DA_FOTO_AQUI" alt="Foto do casal">
+  <div class="contador" id="contador"></div>
+
+  <script>
+    const dataInicio = new Date("2022-06-12T00:00:00"); // Troque pela sua data
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = agora - dataInicio;
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("contador").innerHTML =
+        `${dias} dias, ${horas}h ${minutos}min ${segundos}s`;
+    }
+
+    setInterval(atualizarContador, 1000);
+  </script>
+</body>
+</html>
