@@ -1,93 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>João e Lorena 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+    body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #000;
       color: #fff;
-      display: flex;
-      justify-content: center;
     }
-
     .container {
-      max-width: 390px; /* largura semelhante a um celular */
+      max-width: 480px;
+      width: 100vw;
+      margin: 0 auto;
       padding: 20px;
       text-align: center;
     }
-
     .header {
-      font-size: 1.5em;
+      font-size: 2.2em;
       margin-bottom: 10px;
-      font-family: 'Georgia', serif;
       color: #e63946;
+      font-family: 'Great Vibes', cursive;
     }
-
     .mensagem {
-      font-size: 1em;
+      font-size: 1.2em;
       color: #ccc;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+      font-family: 'Allura', cursive;
     }
-
     .foto {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 12px;
       aspect-ratio: 4/5;
-      background-image: url('https://i.imgur.com/h1aVZEB.png'); /* coloque aqui sua imagem direta */
+      background-image: url('https://i.imgur.com/h1aVZEB.png');
       background-size: cover;
       background-position: center;
       margin-bottom: 20px;
     }
-
     .titulo-contador {
       font-size: 1.2em;
       margin: 20px 0 10px;
     }
-
     .contador-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      margin-bottom: 30px;
     }
-
     .bloco {
       background-color: #111;
       padding: 10px;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     }
-
     .valor {
       font-size: 1.3em;
       font-weight: bold;
     }
-
     .label {
-      font-size: 0.7em;
+      font-size: 0.75em;
       color: #999;
     }
-
     .youtube {
-      margin-top: 20px;
+      margin-top: 30px;
       border-radius: 10px;
       overflow: hidden;
       aspect-ratio: 16 / 9;
     }
-
     iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
-
     footer {
       margin-top: 30px;
       font-size: 0.9em;
-      color: #444;
+      color: #555;
     }
   </style>
 </head>
@@ -132,10 +126,11 @@
 
     <div class="youtube">
       <iframe 
-        src="https://www.youtube.com/watch?v=MqazV4hbu8E"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-      ></iframe>
+        src="https://www.youtube.com/embed/MqazV4hbu8E" 
+        title="Música para minha namorada"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </div>
 
     <footer>Feito com amor 💖</footer>
@@ -143,11 +138,9 @@
 
   <script>
     const dataInicio = new Date("2024-06-19T12:30:00");
-
     function atualizarContador() {
       const agora = new Date();
       let diff = agora - dataInicio;
-
       const segundosTotal = Math.floor(diff / 1000);
       const anos = Math.floor(segundosTotal / (365.25 * 24 * 60 * 60));
       const meses = Math.floor((segundosTotal % (365.25 * 24 * 60 * 60)) / (30.44 * 24 * 60 * 60));
@@ -163,9 +156,10 @@
       document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
       document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0');
     }
-
     setInterval(atualizarContador, 1000);
     atualizarContador();
   </script>
 </body>
 </html>
+```
+
