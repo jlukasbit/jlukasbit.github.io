@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Eu e Você 💖</title>
+  <title>João e Lorena 💖</title>
   <style>
     body {
       margin: 0;
@@ -10,119 +10,162 @@
       background-color: #000;
       color: #fff;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      text-align: center;
+    }
+
+    .container {
+      max-width: 390px; /* largura semelhante a um celular */
       padding: 20px;
+      text-align: center;
     }
 
-    h1 {
-      font-size: 2em;
-      margin-top: 20px;
-      color: #fff;
+    .header {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      font-family: 'Georgia', serif;
+      color: #e63946;
     }
 
-    .frase {
-      font-size: 1.2em;
+    .mensagem {
+      font-size: 1em;
       color: #ccc;
       margin-bottom: 30px;
     }
 
     .foto {
-      width: 300px;
-      height: 300px;
-      border-radius: 15px;
-      background-image: url('https://i.imgur.com/h1aVZEB.png');
+      width: 100%;
+      border-radius: 10px;
+      aspect-ratio: 4/5;
+      background-image: url('https://i.imgur.com/h1aVZEB.png'); /* coloque aqui sua imagem direta */
       background-size: cover;
       background-position: center;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      margin-bottom: 20px;
+    }
+
+    .titulo-contador {
+      font-size: 1.2em;
+      margin: 20px 0 10px;
+    }
+
+    .contador-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
       margin-bottom: 30px;
     }
 
-    .flip-clock {
-      display: flex;
-      gap: 10px;
-      font-size: 2.5em;
+    .bloco {
+      background-color: #111;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .valor {
+      font-size: 1.3em;
       font-weight: bold;
     }
 
-    .flip-unit {
-      background: #111;
-      padding: 10px 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
-      min-width: 60px;
+    .label {
+      font-size: 0.7em;
+      color: #999;
     }
 
-    .label {
-      font-size: 0.5em;
-      color: #999;
-      margin-top: 5px;
+    .youtube {
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     footer {
-      margin-top: 40px;
+      margin-top: 30px;
       font-size: 0.9em;
-      color: #555;
+      color: #444;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <div class="header">João e Lorena</div>
+    <div class="mensagem">
+      Você trouxe cor e brilho para minha vida, e por isso sou eternamente grato. <br>
+      Cada momento ao seu lado é um presente que guardo no coração. <br>
+      Te amo profundamente, obrigado por cada sorriso compartilhado.
+    </div>
 
-  <h1>Estamos juntos há:</h1>
-  <div class="frase">Eu te amo mais que tudo, mais que o mundo todo!<br>I love you! Je t'aime!</div>
+    <div class="foto"></div>
 
-  <div class="foto"></div>
+    <div class="titulo-contador">Compartilhando momentos há</div>
+    <div class="contador-grid">
+      <div class="bloco">
+        <div class="valor" id="anos">0</div>
+        <div class="label">anos</div>
+      </div>
+      <div class="bloco">
+        <div class="valor" id="meses">0</div>
+        <div class="label">meses</div>
+      </div>
+      <div class="bloco">
+        <div class="valor" id="dias">0</div>
+        <div class="label">dias</div>
+      </div>
+      <div class="bloco">
+        <div class="valor" id="horas">00</div>
+        <div class="label">horas</div>
+      </div>
+      <div class="bloco">
+        <div class="valor" id="minutos">00</div>
+        <div class="label">minutos</div>
+      </div>
+      <div class="bloco">
+        <div class="valor" id="segundos">00</div>
+        <div class="label">segundos</div>
+      </div>
+    </div>
 
-  <div class="flip-clock">
-    <div class="flip-unit">
-      <div id="dias">0</div>
-      <div class="label">dias</div>
+    <div class="youtube">
+      <iframe 
+        src="https://www.youtube.com/watch?v=MqazV4hbu8E"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
     </div>
-    <div class="flip-unit">
-      <div id="horas">00</div>
-      <div class="label">horas</div>
-    </div>
-    <div class="flip-unit">
-      <div id="minutos">00</div>
-      <div class="label">minutos</div>
-    </div>
-    <div class="flip-unit">
-      <div id="segundos">00</div>
-      <div class="label">segundos</div>
-    </div>
+
+    <footer>Feito com amor 💖</footer>
   </div>
-
-  <footer>Feito com amor 💖</footer>
 
   <script>
     const dataInicio = new Date("2024-06-19T12:30:00");
 
-    function formatarUnidade(valor) {
-      return valor < 10 ? '0' + valor : valor;
-    }
-
     function atualizarContador() {
       const agora = new Date();
-      const diff = agora - dataInicio;
+      let diff = agora - dataInicio;
 
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutos = Math.floor((diff / (1000 * 60)) % 60);
-      const segundos = Math.floor((diff / 1000) % 60);
+      const segundosTotal = Math.floor(diff / 1000);
+      const anos = Math.floor(segundosTotal / (365.25 * 24 * 60 * 60));
+      const meses = Math.floor((segundosTotal % (365.25 * 24 * 60 * 60)) / (30.44 * 24 * 60 * 60));
+      const dias = Math.floor((segundosTotal % (30.44 * 24 * 60 * 60)) / (24 * 60 * 60));
+      const horas = Math.floor((segundosTotal % (24 * 60 * 60)) / (60 * 60));
+      const minutos = Math.floor((segundosTotal % (60 * 60)) / 60);
+      const segundos = Math.floor(segundosTotal % 60);
 
+      document.getElementById("anos").textContent = anos;
+      document.getElementById("meses").textContent = meses;
       document.getElementById("dias").textContent = dias;
-      document.getElementById("horas").textContent = formatarUnidade(horas);
-      document.getElementById("minutos").textContent = formatarUnidade(minutos);
-      document.getElementById("segundos").textContent = formatarUnidade(segundos);
+      document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
+      document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
+      document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0');
     }
 
     setInterval(atualizarContador, 1000);
     atualizarContador();
   </script>
-
 </body>
 </html>
-
