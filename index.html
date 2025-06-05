@@ -1,45 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Nosso Amor</title>
+  <meta charset="UTF-8" />
+  <title>Eu e Você 💖</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
-      margin-top: 50px;
+      padding: 20px;
     }
-    img {
-      width: 300px;
-      border-radius: 10px;
-    }
-    .contador {
+
+    h1 {
       font-size: 2em;
       margin-top: 20px;
+      color: #fff;
+    }
+
+    .frase {
+      font-size: 1.2em;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    .foto {
+      width: 300px;
+      height: 300px;
+      border-radius: 15px;
+      background-image: url('https://i.imgur.com/Nr0rjBt.jpeg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      margin-bottom: 30px;
+    }
+
+    .flip-clock {
+      display: flex;
+      gap: 10px;
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+
+    .flip-unit {
+      background: #111;
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+      min-width: 60px;
+    }
+
+    .label {
+      font-size: 0.5em;
+      color: #999;
+      margin-top: 5px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <h1>Estamos juntos há...</h1>
-  <img src="URL_DA_FOTO_AQUI" alt="Foto do casal">
-  <div class="contador" id="contador"></div>
+
+  <h1>Estamos juntos há:</h1>
+  <div class="frase">Eu te amo mais que tudo, mais que o mundo todo!<br>I love you! Je t'aime!</div>
+
+  <div class="foto"></div>
+
+  <div class="flip-clock">
+    <div class="flip-unit">
+      <div id="dias">0</div>
+      <div class="label">dias</div>
+    </div>
+    <div class="flip-unit">
+      <div id="horas">00</div>
+      <div class="label">horas</div>
+    </div>
+    <div class="flip-unit">
+      <div id="minutos">00</div>
+      <div class="label">minutos</div>
+    </div>
+    <div class="flip-unit">
+      <div id="segundos">00</div>
+      <div class="label">segundos</div>
+    </div>
+  </div>
+
+  <footer>Feito com amor 💖</footer>
 
   <script>
-    const dataInicio = new Date("2022-06-12T00:00:00"); // Troque pela sua data
+    const dataInicio = new Date("2024-06-19T12:30:00");
+
+    function formatarUnidade(valor) {
+      return valor < 10 ? '0' + valor : valor;
+    }
 
     function atualizarContador() {
       const agora = new Date();
       const diff = agora - dataInicio;
+
       const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutos = Math.floor((diff / (1000 * 60)) % 60);
       const segundos = Math.floor((diff / 1000) % 60);
 
-      document.getElementById("contador").innerHTML =
-        `${dias} dias, ${horas}h ${minutos}min ${segundos}s`;
+      document.getElementById("dias").textContent = dias;
+      document.getElementById("horas").textContent = formatarUnidade(horas);
+      document.getElementById("minutos").textContent = formatarUnidade(minutos);
+      document.getElementById("segundos").textContent = formatarUnidade(segundos);
     }
 
     setInterval(atualizarContador, 1000);
+    atualizarContador();
   </script>
+
 </body>
 </html>
+
